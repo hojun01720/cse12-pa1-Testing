@@ -287,6 +287,36 @@ public class BasketTest {
 		assertEquals(4, btt.countItem(i3));
 	}
 
+	@Test
+	public void everythingDiffObjCountItemOver1000(){
+		Basket btt = makeBasket();
+
+		Item i0 = new Item("Shampoo", 5);
+		btt.addToBasket(i0);
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+
+		Item i2 = new Item("a", 1);
+		btt.addToBasket(i2);
+
+		Item i3 = new Item("b", 2);
+		for(int i = 0; i <= 1010; i++){
+			btt.addToBasket(i3);
+		}
+		
+		Item i4 = new Item("b", 2);
+		btt.addToBasket(i4);
+
+		btt.removeFromBasket(i3);
+		btt.removeAllFromBasket(i1);
+
+
+		
+		assertEquals(1010, btt.countItem(i3));
+	}
+
 	
 
 }
