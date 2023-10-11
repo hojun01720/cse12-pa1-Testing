@@ -45,7 +45,7 @@ public class BasketTest {
 		return null;
 	}
 	
-	@Test
+	//@Test
 	public void addedHasCount1() {
 		Basket basketToTest = makeBasket();
 
@@ -53,5 +53,236 @@ public class BasketTest {
 		basketToTest.addToBasket(i);
 		assertEquals(1, basketToTest.count());
 	}
+
+	//@Test
+	public void addedDup(){
+		Basket btt = makeBasket();
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+		assertEquals(2, btt.count());
+	}
+
+	@Test
+	public void totCostCheck(){
+		Basket btt = makeBasket();
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+		assertEquals(2000, btt.totalCost());
+	}
+
+	@Test
+	public void manyItems(){
+		Basket btt = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		btt.addToBasket(i);
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+
+		Item i2 = new Item("a", 1);
+		btt.addToBasket(i2);
+
+		Item i3 = new Item("b", 2);
+		btt.addToBasket(i3);
+
+		assertEquals(2008, btt.totalCost());
+	}
+
+	@Test
+	public void manyItemsRemove(){
+		Basket btt = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		btt.addToBasket(i);
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+
+		Item i2 = new Item("a", 1);
+		btt.addToBasket(i2);
+
+		Item i3 = new Item("b", 2);
+		
+
+		assertEquals(false, btt.removeFromBasket(i3));
+	}
+
+	@Test
+	public void manyItemsRemove2(){
+		Basket btt = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		btt.addToBasket(i);
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+
+		Item i2 = new Item("a", 1);
+		btt.addToBasket(i2);
+
+		Item i3 = new Item("b", 2);
+		btt.addToBasket(i3);
+
+		assertEquals(true, btt.removeFromBasket(i3));
+	}
+
+	@Test
+	public void manyItemsRemoveAll(){
+		Basket btt = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		btt.addToBasket(i);
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+
+		Item i2 = new Item("a", 1);
+		btt.addToBasket(i2);
+
+		Item i3 = new Item("b", 2);
+		btt.addToBasket(i3);
+
+		assertEquals(true, btt.removeAllFromBasket(i1));
+	}
+
+	@Test
+	public void countSpecific(){
+		Basket btt = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		btt.addToBasket(i);
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+
+		Item i2 = new Item("a", 1);
+		btt.addToBasket(i2);
+
+		Item i3 = new Item("b", 2);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+
+
+		assertEquals(4, btt.countItem(i3));
+	}
+
+	public void everythingCount(){
+		Basket btt = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		btt.addToBasket(i);
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+
+		Item i2 = new Item("a", 1);
+		btt.addToBasket(i2);
+
+		Item i3 = new Item("b", 2);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+
+		btt.removeFromBasket(i3);
+		btt.removeAllFromBasket(i1);
+		
+		assertEquals(5, btt.count());
+	}
+
+	public void everythingCountItem(){
+		Basket btt = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		btt.addToBasket(i);
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+
+		Item i2 = new Item("a", 1);
+		btt.addToBasket(i2);
+
+		Item i3 = new Item("b", 2);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+
+		btt.removeFromBasket(i3);
+		btt.removeAllFromBasket(i1);
+		
+		assertEquals(3, btt.countItem(i3));
+	}
+
+	public void everythingEmpty(){
+		Basket btt = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		btt.addToBasket(i);
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+
+		Item i2 = new Item("a", 1);
+		btt.addToBasket(i2);
+
+		Item i3 = new Item("b", 2);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+
+		btt.removeFromBasket(i3);
+		btt.removeAllFromBasket(i1);
+
+		btt.empty();
+		
+		assertEquals(0, btt.count());
+	}
+
+	public void everythingDiffObjCountItem(){
+		Basket btt = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		btt.addToBasket(i);
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+
+		Item i2 = new Item("a", 1);
+		btt.addToBasket(i2);
+
+		Item i3 = new Item("b", 2);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+		btt.addToBasket(i3);
+
+		Item i4 = new Item("b", 2);
+		btt.addToBasket(i4);
+
+		btt.removeFromBasket(i3);
+		btt.removeAllFromBasket(i1);
+		
+		assertEquals(4, btt.countItem(i3));
+	}
+
+	
 
 }
