@@ -397,4 +397,42 @@ public class BasketTest {
 		assertEquals(0, basketToTest.countItem(i1));
 	}
 
+	@Test
+	public void emptyString() {
+		Basket basketToTest = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		basketToTest.addToBasket(i);
+		basketToTest.removeFromBasket(i);
+		basketToTest.removeFromBasket(i);
+
+		Item i1 = new Item(null, 0);
+		basketToTest.addToBasket(i1);
+		basketToTest.addToBasket(i1);
+		basketToTest.addToBasket(i1);
+
+		basketToTest.removeFromBasket(i1);
+
+
+		assertEquals(0, basketToTest.countItem(i1));
+	}
+
+
+	public void emptyListCount(){
+		Basket btt = makeBasket();
+
+		Item i1 = new Item("Phone", 1000);
+		
+
+		assertEquals(0, btt.count());
+	}
+
+	public void emptyListCount2(){
+		Basket btt = makeBasket();
+
+		Item i1 = new Item("Phone", 1000);
+		
+
+		assertEquals(0, btt.countItem(i1));
+	}
 }
