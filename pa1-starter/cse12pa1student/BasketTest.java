@@ -61,7 +61,11 @@ public class BasketTest {
 		Item i1 = new Item("Phone", 1000);
 		btt.addToBasket(i1);
 		btt.addToBasket(i1);
-		assertEquals(2, btt.count());
+
+		Item i2 = new Item("Phone", 1000);
+		btt.addToBasket(i2);
+
+		assertEquals(3, btt.countItem(i1));
 	}
 
 	@Test
@@ -302,7 +306,7 @@ public class BasketTest {
 		btt.addToBasket(i2);
 
 		Item i3 = new Item("b", 2);
-		for(int i = 0; i <= 1010; i++){
+		for(int i = 0; i < 1010; i++){
 			btt.addToBasket(i3);
 		}
 		
@@ -358,7 +362,7 @@ public class BasketTest {
 		assertEquals(0, basketToTest.countItem(i1));
 	}
 
-
+	@Test
 	public void emptyCost(){
 		Basket btt = makeBasket();
 
@@ -370,7 +374,7 @@ public class BasketTest {
 		btt.empty();
 
 		Item i3 = new Item("b", 2);
-		for(int i = 0; i <= 1010; i++){
+		for(int i = 0; i < 1010; i++){
 			btt.addToBasket(i3);
 		}
 
@@ -417,7 +421,7 @@ public class BasketTest {
 		assertEquals(0, basketToTest.countItem(i1));
 	}
 
-
+	@Test
 	public void emptyListCount(){
 		Basket btt = makeBasket();
 
@@ -426,7 +430,8 @@ public class BasketTest {
 
 		assertEquals(0, btt.count());
 	}
-
+	
+	@Test
 	public void emptyListCount2(){
 		Basket btt = makeBasket();
 
@@ -435,4 +440,29 @@ public class BasketTest {
 
 		assertEquals(0, btt.countItem(i1));
 	}
+	
+	@Test
+	public void equalsOrSigns1(){
+		Basket btt = makeBasket();
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		
+
+		assertEquals(1, btt.countItem(i1));
+	}
+
+	@Test
+	public void over1000(){
+		Basket btt = makeBasket();
+
+
+		Item i3 = new Item("b", 2);
+		for(int i = 0; i < 1010; i++){
+			btt.addToBasket(i3);
+		}
+		
+		assertEquals(1010, btt.countItem(i3));
+	}
+	
 }
