@@ -343,4 +343,20 @@ public class BasketTest {
 		assertEquals(0, basketToTest.countItem(i1));
 	}
 
+	@Test
+	public void countNull() {
+		Basket basketToTest = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		basketToTest.addToBasket(i);
+		basketToTest.removeFromBasket(i);
+		basketToTest.removeFromBasket(i);
+
+		Item i1 = new Item(null, 0);
+		basketToTest.addToBasket(i1);
+
+		assertEquals(0, basketToTest.countItem(i1));
+	}
+
+
 }
