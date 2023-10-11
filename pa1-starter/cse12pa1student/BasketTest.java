@@ -329,5 +329,18 @@ public class BasketTest {
 		assertEquals(0, basketToTest.count());
 	}
 	
+	@Test
+	public void countNothing() {
+		Basket basketToTest = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		basketToTest.addToBasket(i);
+		basketToTest.removeFromBasket(i);
+		basketToTest.removeFromBasket(i);
+
+		Item i1 = new Item("Phone", 1000);
+
+		assertEquals(0, basketToTest.countItem(i1));
+	}
 
 }
