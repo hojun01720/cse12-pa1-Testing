@@ -45,7 +45,7 @@ public class BasketTest {
 		return null;
 	}
 	
-	//@Test
+	@Test
 	public void addedHasCount1() {
 		Basket basketToTest = makeBasket();
 
@@ -54,7 +54,7 @@ public class BasketTest {
 		assertEquals(1, basketToTest.count());
 	}
 
-	//@Test
+	@Test
 	public void addedDup(){
 		Basket btt = makeBasket();
 
@@ -317,6 +317,17 @@ public class BasketTest {
 		assertEquals(1010, btt.countItem(i3));
 	}
 
+	@Test
+	public void overDelete() {
+		Basket basketToTest = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		basketToTest.addToBasket(i);
+		basketToTest.removeFromBasket(i);
+		basketToTest.removeFromBasket(i);
+
+		assertEquals(0, basketToTest.count());
+	}
 	
 
 }
