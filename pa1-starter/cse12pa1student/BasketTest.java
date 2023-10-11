@@ -178,6 +178,7 @@ public class BasketTest {
 		assertEquals(4, btt.countItem(i3));
 	}
 
+	@Test
 	public void everythingCount(){
 		Basket btt = makeBasket();
 
@@ -203,6 +204,7 @@ public class BasketTest {
 		assertEquals(5, btt.count());
 	}
 
+	@Test
 	public void everythingCountItem(){
 		Basket btt = makeBasket();
 
@@ -228,6 +230,7 @@ public class BasketTest {
 		assertEquals(3, btt.countItem(i3));
 	}
 
+	@Test
 	public void everythingEmpty(){
 		Basket btt = makeBasket();
 
@@ -255,6 +258,7 @@ public class BasketTest {
 		assertEquals(0, btt.count());
 	}
 
+	@Test
 	public void everythingDiffObjCountItem(){
 		Basket btt = makeBasket();
 
