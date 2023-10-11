@@ -359,4 +359,42 @@ public class BasketTest {
 	}
 
 
+	public void emptyCost(){
+		Basket btt = makeBasket();
+
+		Item i1 = new Item("Phone", 1000);
+		btt.addToBasket(i1);
+		btt.addToBasket(i1);
+
+		
+		btt.empty();
+
+		Item i3 = new Item("b", 2);
+		for(int i = 0; i <= 1010; i++){
+			btt.addToBasket(i3);
+		}
+
+		assertEquals(2020, btt.totalCost());
+	}
+
+	@Test
+	public void removeNull() {
+		Basket basketToTest = makeBasket();
+
+		Item i = new Item("Shampoo", 5);
+		basketToTest.addToBasket(i);
+		basketToTest.removeFromBasket(i);
+		basketToTest.removeFromBasket(i);
+
+		Item i1 = new Item(null, 0);
+		basketToTest.addToBasket(i1);
+		basketToTest.addToBasket(i1);
+		basketToTest.addToBasket(i1);
+
+		basketToTest.removeFromBasket(i1);
+
+
+		assertEquals(0, basketToTest.countItem(i1));
+	}
+
 }
